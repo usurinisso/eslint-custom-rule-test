@@ -1,0 +1,16 @@
+{
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "tsconfig.json"
+    }
+  },
+  "moduleDirectories": ["node_modules", "src/domain", "src/api", "src/persistence", "src"],
+  "moduleFileExtensions": ["ts", "js"],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "testMatch": ["**/test/**/*.spec.(ts|js)"],
+  "testEnvironment": "node",
+  "collectCoverageFrom": ["src/**/*.{ts,js}", "!src/modules/*.{ts,js}", "!src/main.{ts,js}"],
+  "setupFiles": ["dotenv/config"]
+}

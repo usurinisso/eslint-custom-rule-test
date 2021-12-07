@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+  nestapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: baguette-store
+    restart: always
+    env_file: .env
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/baguette-store
+      - ./node_modules:/usr/src/baguette-store/node_modules
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:12.5
+    environment:
+      POSTGRES_DB: baguette-store
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5432:5432
+    volumes:
+     - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data: {}
